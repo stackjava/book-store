@@ -1121,9 +1121,10 @@
 
         </header>
 
-        <div th:replace="${mainContent}" class="content-wrapper">
-            <div class="content">                <div class="row">
-                <div class="col-lg-12">
+        <div class="content-wrapper">
+            <div th:replace="${mainContent}" class="content">
+                <div class="row">
+                    <div class="col-lg-12">
                     <div class="card card-default text-dark">
                         <div class="card-header">
                             <h1 class="mb-3">Introduction</h1>
@@ -1205,10 +1206,8 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
-            </div>
-
-
 
             <div class="right-sidebar-2">
                 <div class="right-sidebar-container-2">
