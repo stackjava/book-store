@@ -28,6 +28,10 @@ public class MvcConfig implements WebMvcConfigurer {
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
                 .resourceChain(false)
                 .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
+        registry.addResourceHandler("/customer-theme/**").addResourceLocations("classpath:/static/customer-theme/")
+                .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
+                .resourceChain(false)
+                .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
     }
 
 
