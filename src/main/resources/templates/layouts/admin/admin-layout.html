@@ -1220,7 +1220,11 @@
                                 <i class="mdi mdi-window-close"></i>
                             </div>
                         </div>
-
+                        <span class="right-sidebar-2-subtitle" th:text="#{language}">Language</span>
+                        <div class="no-col-space">
+                            <a th:href="@{/?language=vi_VN}">Tiếng Việt</a>
+                            <a th:href="@{/?language=en}">English</a>
+                        </div>
                         <div class="right-sidebar-2-body">
                             <span class="right-sidebar-2-subtitle">Header Layout</span>
                             <div class="no-col-space">
@@ -1257,7 +1261,6 @@
                                 <a href="javascript:void(0);" class="btn-right-sidebar-2 btn-right-sidebar-2-active ltr-to">LTR</a>
                                 <a href="javascript:void(0);" class="btn-right-sidebar-2 rtl-to">RTL</a>
                             </div>
-
                             <div class="d-flex justify-content-center" style="padding-top: 30px">
                                 <div id="reset-options" style="width: auto; cursor: pointer" class="btn-right-sidebar-2 btn-reset">Reset
                                     Settings</div>
