@@ -9,9 +9,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import stackjava.com.bookstore.model.Author;
+import stackjava.com.bookstore.model.db.Author;
 import stackjava.com.bookstore.model.form.AuthorCreateForm;
 import stackjava.com.bookstore.service.AuthorService;
+
+import java.io.IOException;
 
 @Controller()
 public class AuthorController {
@@ -33,7 +35,7 @@ public class AuthorController {
 
     @PostMapping("/admin/authors")
     public String authors(@ModelAttribute("author") @Validated AuthorCreateForm authorCreateForm,
-                          BindingResult result) {
+                          BindingResult result) throws IOException {
         if (result.hasErrors()) {
             for (ObjectError objectError: result.getAllErrors()) {
                 System.out.println(objectError);
@@ -41,6 +43,10 @@ public class AuthorController {
             }
             return "author-create";
         }
+
+        Author author = authorCreateForm.toAuthor();
+        authorService.addAuthor(author);
+
         return "authors";
     }
 
