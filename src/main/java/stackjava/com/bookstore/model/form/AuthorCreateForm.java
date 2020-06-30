@@ -16,10 +16,12 @@ public class AuthorCreateForm implements Serializable {
     @StringField(notEmpty = true, min = 1, max = 30)
     private String name;
     private String address;
+    private String email;
+    private String phoneNumber;
     private String national;
     private String dateOfBirth;
 
-    @FileField(notNull = true, max = 1024, messageMaxSize = "{avatar.size.max}")
+    @FileField(notNull = true, isImage = true, max = 1024, messageMaxSize = "{avatar.size.max}")
     private MultipartFile avatar;
 
     public Author toAuthor() throws IOException {

@@ -43,11 +43,10 @@ public class AuthorController {
             }
             return "author-create";
         }
-
         Author author = authorCreateForm.toAuthor();
         authorService.addAuthor(author);
 
-        return "authors";
+        return "redirect:authors";
     }
 
 }

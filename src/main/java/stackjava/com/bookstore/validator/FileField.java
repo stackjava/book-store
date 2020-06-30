@@ -13,13 +13,17 @@ public @interface FileField {
 
     String message() default "FileField Error";
 
-    String messageNotNull() default "{FileFile.NotNull}";
+    String messageNotNull() default "{FileField.NotNull}";
 
     String messageMinSize() default "{FileField.MinSize}";
 
     String messageMaxSize() default "{FileField.MaxSize}";
 
+    String messageIsImage() default "{FileField.IsImage}";
+
     boolean notNull() default false;
+
+    boolean isImage() default false;
 
     long min() default 0;
 
