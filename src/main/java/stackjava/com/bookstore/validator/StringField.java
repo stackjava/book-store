@@ -13,9 +13,9 @@ public @interface StringField {
 
     String message() default "Wrong data of string field";
 
-    String messageNotEmpty() default "Field can't be empty";
+    String messageNotEmpty() default "{StringField.NotEmpty}";
 
-    String messageLength() default "Wrong length of field";
+    String messageLength() default "{StringField.Length}";
 
     boolean notEmpty() default false;
 

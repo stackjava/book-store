@@ -24,7 +24,7 @@
             <h2>Highlighted Input Field</h2>
           </div>
           <div class="card-body">
-            <form action="#" th:action="@{/admin/authors}" th:object="${author}" method="post">
+            <form action="#" th:action="@{/admin/authors}" th:object="${author}" method="post" enctype="multipart/form-data" >
               <div class="form-row">
 
                 <div class="col-md-12 mb-3">
@@ -41,6 +41,15 @@
                   <input type="text" class="form-control" id="address" placeholder="address" th:field="*{address}"
                          th:classappend="${#fields.hasErrors('address') ? 'is-invalid':''}">
                   <div class="invalid-feedback" th:errors="*{address}">
+                    Looks good!
+                  </div>
+                </div>
+
+                <div class="col-md-12 mb-3">
+                  <label for="avatar">Avatar</label>
+                  <input type="file" class="form-control" id="avatar" th:field="*{avatar}"
+                         th:classappend="${#fields.hasErrors('avatar') ? 'is-invalid':''}">
+                  <div class="invalid-feedback" th:errors="*{avatar}">
                     Looks good!
                   </div>
                 </div>

@@ -25,7 +25,8 @@ public class StringFieldValidator implements ConstraintValidator<StringField, St
             context.buildConstraintViolationWithTemplate(messageNotEmpty).addConstraintViolation();
             return false;
         }
-        if ((min > 0 || max < Integer.MAX_VALUE) && (value.length() < min || value.length() > max)) {
+        if ((min > 0 || max < Integer.MAX_VALUE) &&
+                (value.isEmpty() || (value.length() < min || value.length() > max))) {
             context.buildConstraintViolationWithTemplate(messageLength).addConstraintViolation();
             return false;
         }
