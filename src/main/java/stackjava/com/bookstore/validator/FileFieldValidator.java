@@ -33,13 +33,13 @@ public class FileFieldValidator implements ConstraintValidator<FileField, Multip
             context.buildConstraintViolationWithTemplate(messageNotNull).addConstraintViolation();
             return false;
         }
-        if (notNull && isImage) {
+        if (value != null && isImage) {
             if (value.getContentType() == null || !value.getContentType().contains("image")) {
                 context.buildConstraintViolationWithTemplate(messageIsImage).addConstraintViolation();
                 return false;
             }
         }
-        if (notNull) {
+        if (value != null) {
             long fileSize = value.getSize()/1024;
             if (min > 0  && fileSize < min ) {
                 context.buildConstraintViolationWithTemplate(messageMinSize).addConstraintViolation();

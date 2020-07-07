@@ -13,11 +13,15 @@ public @interface StringField {
 
     String message() default "Wrong data of string field";
 
+    String messageIsEmail() default "{StringField.IsEmail}";
+
     String messageNotEmpty() default "{StringField.NotEmpty}";
 
     String messageLength() default "{StringField.Length}";
 
     boolean notEmpty() default false;
+
+    boolean isEmail() default false;
 
     int min() default 0;
 

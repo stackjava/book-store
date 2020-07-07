@@ -14,6 +14,7 @@ import stackjava.com.bookstore.model.form.AuthorCreateForm;
 import stackjava.com.bookstore.service.AuthorService;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 @Controller()
 public class AuthorController {
@@ -21,32 +22,32 @@ public class AuthorController {
     @Autowired
     private AuthorService authorService;
 
-    @RequestMapping("/admin/authors")
+    @RequestMapping("/admin/author-list")
     public String authors(Model model) {
         model.addAttribute("authorList", authorService.findAllAuthor());
-        return "authors";
+        return "author-list";
     }
 
-    @RequestMapping("/admin/author-create")
+    @RequestMapping("/admin/author-add")
     public String authorsCreate(Model model) {
         model.addAttribute("author", new Author());
-        return "author-create";
+        return "author-add";
     }
 
-    @PostMapping("/admin/authors")
+    @PostMapping("/admin/author-add")
     public String authors(@ModelAttribute("author") @Validated AuthorCreateForm authorCreateForm,
-                          BindingResult result) throws IOException {
+                          BindingResult result) throws IOException, ParseException {
         if (result.hasErrors()) {
             for (ObjectError objectError: result.getAllErrors()) {
                 System.out.println(objectError);
                 System.out.println(objectError.getCode());
             }
-            return "author-create";
+            return "author-add";
         }
         Author author = authorCreateForm.toAuthor();
         authorService.addAuthor(author);
 
-        return "redirect:authors";
+        return "redirect:author-list";
     }
 
 }

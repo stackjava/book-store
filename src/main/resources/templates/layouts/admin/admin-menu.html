@@ -22,7 +22,7 @@
             <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
           </g>
         </svg>
-        <span class="brand-name text-truncate">Dashboard</span>
+        <span class="brand-name text-truncate" th:text="${#locale}">Dashboard</span>
       </a>
     </div>
     <!-- begin sidebar scrollbar -->
@@ -71,7 +71,7 @@
         </li>
 
         <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/admin/authors') ? 'active':''}">
-          <a class="sidenav-item-link" th:href="@{/admin/authors}">
+          <a class="sidenav-item-link" th:href="@{/admin/author-list}">
             <i class="mdi mdi-account-circle"></i>
             <span class="nav-text" th:text="#{author}">Authors</span>
           </a>
