@@ -26,7 +26,7 @@ public class MvcConfig implements WebMvcConfigurer {
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
                 .resourceChain(false)
                 .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
-        registry.addResourceHandler("/admin/assets/**").addResourceLocations("classpath:/static/admin-theme/assets/")
+        registry.addResourceHandler("/admin/**/assets/**").addResourceLocations("classpath:/static/admin-theme/assets/")
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
                 .resourceChain(false)
                 .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
