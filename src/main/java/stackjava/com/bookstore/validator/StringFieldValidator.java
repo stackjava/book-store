@@ -1,5 +1,7 @@
 package stackjava.com.bookstore.validator;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
@@ -26,21 +28,21 @@ public class StringFieldValidator implements ConstraintValidator<StringField, St
 
     public boolean isValid(String value, ConstraintValidatorContext context) {
         context.disableDefaultConstraintViolation();
-        if (notEmpty && value.isEmpty()) {
+        if (notEmpty && StringUtils.isEmpty(value)) {
             context.buildConstraintViolationWithTemplate(messageNotEmpty).addConstraintViolation();
             return false;
         }
         if (isEmail) {
-            if (!value.isEmpty() && !checkEmailFormat(value)) {
+            if (StringUtils.isNotEmpty(value) && !checkEmailFormat(value)) {
                 context.buildConstraintViolationWithTemplate(messageIsEmail).addConstraintViolation();
                 return false;
             }
         }
-        if (!value.isEmpty() && (max < Integer.MAX_VALUE) && (value.length() > max)) {
+        if (StringUtils.isNotEmpty(value) && (max < Integer.MAX_VALUE) && (value.length() > max)) {
             context.buildConstraintViolationWithTemplate(messageLength).addConstraintViolation();
             return false;
         }
-        if ((min > 0) && (value.isEmpty() || (value.length() < min))) {
+        if ((min > 0) && (StringUtils.isEmpty(value) || (value.length() < min))) {
             context.buildConstraintViolationWithTemplate(messageLength).addConstraintViolation();
             return false;
         }
